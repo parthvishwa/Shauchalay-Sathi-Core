@@ -1,6 +1,7 @@
 {
-  "env": {
-    "MONGO_USER": "root",
-    "MONGO_PASSWORD": ""
+  "dbUser": {
+    "MONGO_USER": "Parth",
+    "MONGO_PASSWORD": "vLkGWwNGIdWVc8xn",
+    "DB_APPDATA": "Shauchalay-sathi-appData"
   }
 }

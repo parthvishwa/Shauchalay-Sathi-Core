@@ -1,9 +1,9 @@
 const isValidEntity = (entityList, entityId) => {
-  return entityList.find(entity => entity.id === entityId) ? true : false;
+  return !!(entityList.find(entity => entity.idn === Number(entityId)));
 };
 
-const isValidName = (entityList, name) => {
-  return entityList.every(type => type.name !== name) ? true : false;
+const isNameUnique = (entityList, name) => {
+  return entityList.every(type => type.name !== name);
 };
 
-module.exports = {isValidEntity, isValidName};
+module.exports = {isValidEntity, isNameUnique};

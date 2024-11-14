@@ -1,54 +1,54 @@
 {
   "areas": [
-    { "id": 1, "name": "M.p. nagar" },
-    { "id": 2, "name": "10 no. stop" },
-    { "id": 3, "name": "TT. nagar" },
-    { "id": 4, "name": "Indrapuri" },
-    { "id": 5, "name": "7 no. stop" },
-    { "id": 6, "name": "Awadhpuri" }
+    { "idn": 1, "name": "M.p. nagar" },
+    { "idn": 2, "name": "10 no. stop" },
+    { "idn": 3, "name": "TT. nagar" },
+    { "idn": 4, "name": "Indrapuri" },
+    { "idn": 5, "name": "7 no. stop" },
+    { "idn": 6, "name": "Awadhpuri" }
   ],
   "shauchalayas": [
-    { "id": 1, "name": "Biblio wala", "areaId": 1, "location": "near Biblio" },
-    { "id": 2, "name": "T.I.M.E. wala", "areaId": 1, "location": "in zone-2" },
+    { "idn": 1, "name": "Biblio wala", "areaId": 1, "location": "near Biblio" },
+    { "idn": 2, "name": "T.I.M.E. wala", "areaId": 1, "location": "in zone-2" },
     {
-      "id": 3,
+      "idn": 3,
       "name": "Anand poha se aage",
       "areaId": 1,
       "location": "next to railway track"
     },
-    { "id": 4, "name": "Jyoti wala", "areaId": 1, "location": "next ot milan" },
+    { "idn": 4, "name": "Jyoti wala", "areaId": 1, "location": "next ot milan" },
     {
-      "id": 5,
+      "idn": 5,
       "name": "BakeNShake k samne",
       "areaId": 2,
       "location": "in parking"
     },
     {
-      "id": 6,
+      "idn": 6,
       "name": "GoldMine wala",
       "areaId": 2,
       "location": "under Maybe there"
     },
     {
-      "id": 7,
+      "idn": 7,
       "name": "Sabse ghatiya wala",
       "areaId": 3,
       "location": "next to kwality"
     },
     {
-      "id": 8,
+      "idn": 8,
       "name": "Darwesh wala",
       "areaId": 4,
       "location": "next to darwesh, obvio!"
     },
     {
-      "id": 9,
+      "idn": 9,
       "name": "Sagar gaire wala",
       "areaId": 5,
       "location": "on the road"
     },
     {
-      "id": 10,
+      "idn": 10,
       "name": "Awadhpuri square",
       "areaId": 6,
       "location": "Opposite to vivekanan"
