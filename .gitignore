@@ -1,5 +1,6 @@
 # Logs
 node_modules
+src/raw
 dist
 dist-ssr
 *.local

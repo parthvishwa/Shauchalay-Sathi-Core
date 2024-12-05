@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const areaSchema = new mongoose.Schema({
-  idn: {type: Number, required: true},
+  _id: {type: String, required: true},
   name: {type: String, required: true},
-},{collection: 'Areas'})
+},{collection: 'Areas', versionKey: false})
 
 module.exports = mongoose.model('Area', areaSchema);
