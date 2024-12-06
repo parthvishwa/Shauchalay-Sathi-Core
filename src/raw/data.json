@@ -1,57 +1,57 @@
 {
   "areas": [
-    { "idn": 1, "name": "M.p. nagar" },
-    { "idn": 2, "name": "10 no. stop" },
-    { "idn": 3, "name": "TT. nagar" },
-    { "idn": 4, "name": "Indrapuri" },
-    { "idn": 5, "name": "7 no. stop" },
-    { "idn": 6, "name": "Awadhpuri" }
+    { "_id": "1", "name": "M.p. nagar" },
+    { "_id": "2", "name": "10 no. stop" },
+    { "_id": "3", "name": "TT. nagar" },
+    { "_id": "4", "name": "Indrapuri" },
+    { "_id": "5", "name": "7 no. stop" },
+    { "_id": "6", "name": "Awadhpuri" }
   ],
   "shauchalayas": [
-    { "idn": 1, "name": "Biblio wala", "areaId": 1, "location": "near Biblio" },
-    { "idn": 2, "name": "T.I.M.E. wala", "areaId": 1, "location": "in zone-2" },
+    { "_id": "1", "name": "Biblio wala", "areaId": "1", "location": "near Biblio" },
+    { "_id": "2", "name": "T.I.M.E. wala", "areaId": "1", "location": "in zone-2" },
     {
-      "idn": 3,
+      "_id": "3",
       "name": "Anand poha se aage",
-      "areaId": 1,
+      "areaId": "1",
       "location": "next to railway track"
     },
-    { "idn": 4, "name": "Jyoti wala", "areaId": 1, "location": "next ot milan" },
+    { "_id": "4", "name": "Jyoti wala", "areaId": "1", "location": "next to milan" },
     {
-      "idn": 5,
+      "_id": "5",
       "name": "BakeNShake k samne",
-      "areaId": 2,
+      "areaId": "2",
       "location": "in parking"
     },
     {
-      "idn": 6,
+      "_id": "6",
       "name": "GoldMine wala",
-      "areaId": 2,
+      "areaId": "2",
       "location": "under Maybe there"
     },
     {
-      "idn": 7,
+      "_id": "7",
       "name": "Sabse ghatiya wala",
-      "areaId": 3,
+      "areaId": "3",
       "location": "next to kwality"
     },
     {
-      "idn": 8,
+      "_id": "8",
       "name": "Darwesh wala",
-      "areaId": 4,
+      "areaId": "4",
       "location": "next to darwesh, obvio!"
     },
     {
-      "idn": 9,
+      "_id": "9",
       "name": "Sagar gaire wala",
-      "areaId": 5,
+      "areaId": "5",
       "location": "on the road"
     },
     {
-      "idn": 10,
+      "_id": "10",
       "name": "Awadhpuri square",
-      "areaId": 6,
-      "location": "Opposite to vivekanan"
+      "areaId": "6",
+      "location": "Opposite to vivekanand school"
     }
   ]
 }

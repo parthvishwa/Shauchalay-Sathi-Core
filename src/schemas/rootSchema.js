@@ -9,8 +9,13 @@ const {
   GraphQLError,
 } = require('graphql');
 const { areas, shauchalayas } = require('../raw/data.json');
-const { isValidEntity, isNameUnique } = require('../util/utils');
+const {
+  isValidEntity,
+  isNameUnique,
+  generateIdforEntity,
+} = require('../util/utils');
 const AreaModel = require('../models/AreaModel');
+
 const ToiletModel = require('../models/ToiletModel');
 
 const rootQuery = new GraphQLObjectType({
@@ -37,7 +42,11 @@ const rootQuery = new GraphQLObjectType({
         id: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve: async (parent, args) => {
-        return await AreaModel.findOne({ idn: Number(args.id) });
+        try {
+          return await AreaModel.findById({ _id: args.id });
+        } catch (error) {
+          return new GraphQLError(error.message);
+        }
       },
     },
     toilet: {
@@ -47,8 +56,12 @@ const rootQuery = new GraphQLObjectType({
         id: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve: async (parent, args) => {
-        return await ToiletModel.findOne({ idn: args.id });
-      },
+        try {
+          return await ToiletModel.findById({ _id: args.id });
+        } catch (error) {
+          return new GraphQLError(error.message);
+        }
+      }
     },
     toiletsInArea: {
       type: new GraphQLList(ToiletType),
@@ -58,10 +71,12 @@ const rootQuery = new GraphQLObjectType({
       },
       resolve: async (parent, args) => {
         try {
-          if (await AreaModel.findOne({ idn: args.areaId }))
-            return await ToiletModel.find({ areaId: Number(args.areaId) });
+          if (await AreaModel.exists({ _id: args.areaId }))
+            return await ToiletModel.find({ areaId: args.areaId });
           else
-            return new GraphQLError("Couldn't find area with id: " + args.areaId);
+            return new GraphQLError(
+              "Couldn't find area with id: " + args.areaId
+            );
         } catch (error) {
           return new GraphQLError(error.message);
         }
@@ -80,17 +95,22 @@ const rootMutation = new GraphQLObjectType({
       args: {
         name: { type: GraphQLNonNull(GraphQLString) },
       },
-      resolve: (parent, args) => {
-        if (!isNameUnique(areas, args.name)) {
+      resolve: async (parent, args) => {
+        if (await AreaModel.exists({ name: args.name })) {
           return new GraphQLError(
-            'Invalid name/Id for Area.name / Name already exists'
+            'Invalid name/Id for Area.name | Name already exists'
           );
         }
+        const size = await AreaModel.countDocuments({});
         const newArea = Object.assign(
           {},
-          { idn: areas.length + 1, name: args.name }
+          { _id: generateIdforEntity(size, args.name), name: args.name }
         );
-        shauchalayas.push(newArea);
+        try {
+          AreaModel.create(newArea);
+        } catch (error) {
+          return new GraphQLError(error.message)
+        }
         return newArea;
       },
     },
@@ -102,23 +122,27 @@ const rootMutation = new GraphQLObjectType({
         areaId: { type: GraphQLNonNull(GraphQLID) },
         location: { type: GraphQLNonNull(GraphQLString) },
       },
-      resolve: (parent, args) => {
-        if (
-          !isValidEntity(areas, args.areaId) ||
-          !isNameUnique(shauchalayas, args.name)
-        ) {
-          throw new GraphQLError('Bad value for name/id');
+      resolve: async (parent, args) => {
+        if (await AreaModel.exists({ _id: args.areaId })) {
+          return new GraphQLError('Bad value for area id');
         }
+        const size = await ToiletModel.countDocuments({});
         const newToilet = Object.assign(
           {},
           {
-            id: shauchalayas.length + 1,
+            _id: generateIdforEntity(size, args.name),
             name: args.name,
             areaId: args.areaId,
             location: args.location,
           }
         );
-        shauchalayas.push(newToilet);
+        if(await ToiletModel.exists({name: args.name, areaId: args.areaId})) {
+          return new GraphQLError(
+            'Invalid name/Id for Area.name | Name already exists'
+          );
+        } else{
+          ToiletModel.create(newToilet)
+        }
         return newToilet;
       },
     },

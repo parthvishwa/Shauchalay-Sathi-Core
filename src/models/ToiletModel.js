@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const toiletSchema = new mongoose.Schema({
-  idn: {type: Number, required: true},
+  _id: {type: String, required: true},
   name: {type: String, required: true},
-  areaId: {type: Number, required: true},
+  areaId: {type: String, required: true},
   location: {type: String, required: true},
-}, {collection: 'Toilets'})
+}, {collection: 'Toilets', versionKey: false})
 
 module.exports = mongoose.model('Toilet', toiletSchema);
