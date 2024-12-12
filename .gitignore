@@ -8,3 +8,4 @@ dist-ssr
 # Editor directories and files
 .vscode
 .idea
+.env
