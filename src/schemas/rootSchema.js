@@ -107,7 +107,7 @@ const rootMutation = new GraphQLObjectType({
           { _id: generateIdforEntity(size, args.name), name: args.name }
         );
         try {
-          AreaModel.create(newArea);
+          await AreaModel.create(newArea);
         } catch (error) {
           return new GraphQLError(error.message)
         }
@@ -141,7 +141,7 @@ const rootMutation = new GraphQLObjectType({
             'Invalid name/Id for Area.name | Name already exists'
           );
         } else{
-          ToiletModel.create(newToilet)
+          await ToiletModel.create(newToilet)
         }
         return newToilet;
       },
